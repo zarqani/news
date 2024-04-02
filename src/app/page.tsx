@@ -30,6 +30,7 @@ export default async function Home({
       ? getNewsAPIPosts({
           ...(startDate && { from: startDate }),
           ...(endDate && { to: endDate }),
+          // q=
         })
       : undefined;
   const guardianPostsPromise =

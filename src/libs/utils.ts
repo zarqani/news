@@ -18,3 +18,14 @@ export const getQueryParams = (queryParams: { [key: string]: any }): string => {
 
   return encodedParams.toString();
 };
+
+export const formatTime = (timeString: string) => {
+  // Parse the ISO 8601 time string
+  const date = new Date(timeString);
+
+  // Format the date using the correct options for locale and format
+  const options: any = { year: "numeric", month: "2-digit", day: "numeric" };
+
+  // Format the date and return the result
+  return date.toLocaleDateString("en-US", options);
+};

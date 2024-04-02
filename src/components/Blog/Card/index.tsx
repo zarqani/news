@@ -1,4 +1,8 @@
+import IconCalender from "@/components/Icons/IconCalender";
+import IconUser from "@/components/Icons/IconUser";
+import { formatTime } from "@/libs/utils";
 import { NewsProps } from "@/types/blog.types";
+import Link from "next/link";
 
 export default function Card({ data }: { data: NewsProps }) {
   // id: 1,
@@ -14,7 +18,9 @@ export default function Card({ data }: { data: NewsProps }) {
   //   name: "CBS News",
   // },
   return (
-    <div
+    <Link
+      href={data.url}
+      target="__blank"
       style={{ breakInside: "avoid" }}
       className="mb-4 h-fit relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md max-w-[24rem] overflow-hidden"
     >
@@ -23,7 +29,12 @@ export default function Card({ data }: { data: NewsProps }) {
           <img src={data.img} alt="ui/ux review check" />
         </div>
       )}
-      <div className="p-6">
+      <div className="p-6 pb-0">
+        <span className="inline-flex items-center px-3 py-0.5 rounded-2xl text-sm font-bold font-display bg-slate-200 text-black">
+          {data.category}
+        </span>
+      </div>
+      <div className="p-6 pt-2">
         <h4 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">
           {data.title}
         </h4>
@@ -31,12 +42,19 @@ export default function Card({ data }: { data: NewsProps }) {
           {data.description}
         </p>
       </div>
-      <div className="p-6 flex items-center justify-between">
-        <div className="flex items-center">{data.authors?.join(",")}</div>
-        <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-normal">
-          {data.date} - {data.category}
+      <div className="p-6 flex items-center justify-between text-xs gap-2">
+        <div className="inline-flex items-center gap-2">
+          {data.authors && (
+            <>
+              <IconUser width={16} />
+              {data.authors.join(",")}
+            </>
+          )}
+        </div>
+        <p className="inline-flex items-center gap-2">
+          <IconCalender width={16} /> {formatTime(data.date)}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
