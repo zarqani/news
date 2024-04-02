@@ -7,12 +7,10 @@ import Filters from "./Filters";
 
 type BlogProps = {
   data: NewsProps[];
-  articles: any;
+  articles?: any;
   categories: string[];
 };
-export default function Blog({ data, articles, categories }: BlogProps) {
-  console.log({ articles });
-
+export default function Blog({ data, categories }: BlogProps) {
   return (
     <>
       <BlogHeader />

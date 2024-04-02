@@ -38,7 +38,10 @@ export default function Select({
         {...props}
       >
         {options.map((item) => (
-          <option value={typeof item === "string" ? item : item.value}>
+          <option
+            key={typeof item === "string" ? item : item.value}
+            value={typeof item === "string" ? item : item.value}
+          >
             {(typeof item === "string" ? item : item.label) || "Select"}
           </option>
         ))}

@@ -41,7 +41,6 @@ export default async function Home({
         })
       : undefined;
 
-  console.log({ mm: type === Sources.s2 || !type });
   const [newsAiPosts, newsAPIPosts, guardianPosts] = await Promise.all([
     newsAiPostsPromise,
     newsAPIPostsPromise,
@@ -61,7 +60,7 @@ export default async function Home({
       <Blog
         data={data}
         categories={categories}
-        articles={[newsAiPosts, newsAPIPosts, guardianPosts]}
+        // articles={[newsAiPosts, newsAPIPosts, guardianPosts]}
       />
     </div>
   );

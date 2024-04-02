@@ -25,7 +25,6 @@ export async function serviceRequest({
     const fetchUrl = `${
       url?.includes("https") ? url : `${process.env.NEXT_PUBLIC_API}${url}`
     }${params ? `?${getQueryParams(params)}` : ""}`;
-    console.log({ url, params, fetchUrl });
 
     const response = await fetch(fetchUrl, requestOptions).then((response) =>
       response.json()

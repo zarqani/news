@@ -26,7 +26,7 @@ export default function Card({ data }: { data: NewsProps }) {
     >
       {data.img && (
         <div className="min-h-36 relative bg-clip-border overflow-hidden bg-transparent text-gray-700 shadow-none m-0 rounded-none">
-          <img src={data.img} alt="ui/ux review check" />
+          <img src={data.img} alt={data.title} />
         </div>
       )}
       <div className="p-6 pb-0">
